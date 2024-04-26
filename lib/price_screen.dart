@@ -19,16 +19,19 @@ class _PriceScreenState extends State<PriceScreen> {
 
 var Url;
 
+
   var currentVale=0.0;
-  late var currentBitcoin; 
-  late var currentCurrency;
+  var currentVale_2=0.0;
+  var currentVale_3=0.0;
+
+
 
 
 
 
   
 
-  Future<Response> fetchData() async {
+  Future<Response> fetchData(var Url) async {
     Response bitcoin_data = await get(Url);
     return bitcoin_data;
   }
@@ -77,8 +80,7 @@ var Url;
               child: Padding(
                 padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
                 child: Text(
-                  // '1 $currentBitcoin = $currentVale $currentCurrency',
-                  // "1 "
+
                   '1 ${cryptoList[0]} = ${currentVale.toInt()} ${currenciesList[selectedCurrency]}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
@@ -89,7 +91,50 @@ var Url;
               ),
             ),
           ),
+                    Padding(
+            padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
+            child: Card(
+              color: const Color.fromARGB(255, 2, 49, 71),
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+                child: Text(
 
+                  '1 ${cryptoList[1]} = ${currentVale_2.toInt()} ${currenciesList[selectedCurrency]}',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
+                    Padding(
+            padding: EdgeInsets.fromLTRB(18.0, 18.0, 18.0, 0),
+            child: Card(
+              color: const Color.fromARGB(255, 2, 49, 71),
+              elevation: 5.0,
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(10.0),
+              ),
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 15.0, horizontal: 28.0),
+                child: Text(
+     
+                  '1 ${cryptoList[2]} = ${currentVale_3.toInt()} ${currenciesList[selectedCurrency]}',
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                    fontSize: 20.0,
+                    color: Colors.white,
+                  ),
+                ),
+              ),
+            ),
+          ),
           
           Container(
             height: 200.0,
@@ -113,17 +158,27 @@ var Url;
                   onSelectedItemChanged: (int selectedItem) {
                     setState(()  async{
                       selectedCurrency = selectedItem;
-                        Url = Uri.parse('https://rest.coinapi.io/v1/exchangerate/BTC/${currenciesList[selectedCurrency]}?apikey=7D92C932-CCE9-4431-9069-53BFAD47D403');
-                      Response output = await fetchData();
-                      var responseData = output.body;
-                      // print(responseData);
-                      currentBitcoin =jsonDecode(responseData)['asset_id_base'];
-                      currentCurrency =jsonDecode(responseData)['asset_id_quote'];
-                      currentVale = jsonDecode(responseData)['rate'];
-                      print(currentVale);
+                      
+                        var Url_1 = Uri.parse('https://rest.coinapi.io/v1/exchangerate/BTC/${currenciesList[selectedCurrency]}?apikey=7D92C932-CCE9-4431-9069-53BFAD47D403');
+                        Response output = await fetchData(Url_1);
+                        var responseData = output.body;
+                        currentVale = jsonDecode(responseData)['rate'];
+
+                        var Url_2 = Uri.parse('https://rest.coinapi.io/v1/exchangerate/ETH/${currenciesList[selectedCurrency]}?apikey=7D92C932-CCE9-4431-9069-53BFAD47D403');
+                        Response output_2 = await fetchData(Url_2);
+                        var responseData_2 = output_2.body;
+                        currentVale_2 = jsonDecode(responseData_2)['rate'];
+
+                        var Url_3 = Uri.parse('https://rest.coinapi.io/v1/exchangerate/LTC/${currenciesList[selectedCurrency]}?apikey=7D92C932-CCE9-4431-9069-53BFAD47D403');
+                        Response output_3 = await fetchData(Url_3);
+                        var responseData_3 = output_3.body;
+                        currentVale_3 = jsonDecode(responseData_3)['rate'];
+
                       //to UPDATE THE value after fetch
                       setState(() {
                         currentVale;
+                        currentVale_2;
+                        currentVale_3;
                       });
                       
                     });
