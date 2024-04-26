@@ -9,8 +9,11 @@ class PriceScreen extends StatefulWidget {
 }
 
 class _PriceScreenState extends State<PriceScreen> {
-  var selectedCurrency = 0;
+  // String selectedCurrency = currenciesList.first; //for DropDownButton
+  var selectedCurrency =0;
   double _kItemExtent = 32.0;
+
+ 
   void _showDialog(Widget child) {
     showCupertinoModalPopup<void>(
       context: context,
@@ -37,6 +40,7 @@ class _PriceScreenState extends State<PriceScreen> {
     return Scaffold(
       appBar: AppBar(
         title: Text('🤑 Coin Ticker'),
+        backgroundColor: const Color.fromARGB(255, 2, 49, 71),
       ),
       body: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -64,45 +68,83 @@ class _PriceScreenState extends State<PriceScreen> {
             ),
           ),
           Container(
-            height: 150.0,
+            height: 200.0,
             alignment: Alignment.center,
             padding: EdgeInsets.only(bottom: 30.0),
             color: const Color.fromARGB(255, 2, 49, 71),
-            child: CupertinoButton(
-              padding: EdgeInsets.zero,
-              onPressed: () => _showDialog(
-                CupertinoPicker(
-                  magnification: 1.22,
-                  squeeze: 1.2,
-                  useMagnifier: true,
-                  itemExtent: _kItemExtent,
-                  // This sets the initial item.
-                  scrollController: FixedExtentScrollController(
-                    initialItem: selectedCurrency,
+
+            //for android
+
+
+            // child: DropdownButton<String>(
+            //   value: selectedCurrency,
+            //   // icon: const Icon(Icons.arrow_downward),
+            //   // elevation: 16,
+            //   // style: const TextStyle(color: Colors.deepPurple),
+            //   // underline: Container(
+            //   //   height: 2,
+            //   //   color: Colors.deepPurpleAccent,
+            //   // ),
+            //   onChanged: (String? value) {
+            //     // This is called when the user selects an item.
+            //     setState(() {
+            //       selectedCurrency = value!;
+            //     });
+            //   },
+            //   items:
+            //       currenciesList.map<DropdownMenuItem<String>>((String value) {
+            //     return DropdownMenuItem<String>(
+            //       value: value,
+            //       child: Text(value),
+            //     );
+            //   }).toList(),
+            // ),
+
+
+
+
+              child: CupertinoButton(
+                padding: EdgeInsets.zero,
+                onPressed: () => _showDialog(
+                  CupertinoPicker(
+                    magnification: 1.22,
+                    squeeze: 1.2,
+                    useMagnifier: true,
+                    itemExtent: _kItemExtent,
+                    // This sets the initial item.
+                    scrollController: FixedExtentScrollController(
+                      initialItem: selectedCurrency,
+                    ),
+                    // This is called when selected item is changed.
+                    onSelectedItemChanged: (int selectedItem) {
+                      setState(() {
+                        selectedCurrency = selectedItem;
+                      });
+                    },
+                    children:
+                        List<Widget>.generate(currenciesList.length, (int index) {
+                      return Center(child: Text(currenciesList[index]));
+                    }),
                   ),
-                  // This is called when selected item is changed.
-                  onSelectedItemChanged: (int selectedItem) {
-                    setState(() {
-                      selectedCurrency = selectedItem;
-                    });
-                  },
-                  children:
-                      List<Widget>.generate(currenciesList.length, (int index) {
-                    return Center(child: Text(currenciesList[index]));
-                  }),
+                ),
+                // This displays the selected fruit name.
+                child: Text(
+                  currenciesList[selectedCurrency],
+                  style: const TextStyle(
+                    fontSize: 22.0,
+                  ),
                 ),
               ),
-              // This displays the selected fruit name.
-              child: Text(
-                currenciesList[selectedCurrency],
-                style: const TextStyle(
-                  fontSize: 22.0,
-                ),
-              ),
-            ),
           ),
         ],
       ),
     );
   }
 }
+
+
+
+
+
+
+

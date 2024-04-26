@@ -1,0 +1,1 @@
+ /Users/Work/Desktop/bitcoin-ticker-flutter/.dart_tool/flutter_build/9e6504480a58054b942a0f5470149776/native_assets.yaml: 
