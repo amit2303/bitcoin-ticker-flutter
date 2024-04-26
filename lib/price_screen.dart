@@ -79,7 +79,7 @@ var Url;
                 child: Text(
                   // '1 $currentBitcoin = $currentVale $currentCurrency',
                   // "1 "
-                  '1 ${cryptoList[0]} = ${currentVale.toStringAsFixed(2)} ${currenciesList[selectedCurrency]}',
+                  '1 ${cryptoList[0]} = ${currentVale.toInt()} ${currenciesList[selectedCurrency]}',
                   textAlign: TextAlign.center,
                   style: TextStyle(
                     fontSize: 20.0,
