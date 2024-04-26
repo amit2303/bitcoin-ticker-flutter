@@ -1,3 +1,6 @@
+import 'package:http/http.dart';
+
+
 
 const List<String> currenciesList = [
   'AUD',
