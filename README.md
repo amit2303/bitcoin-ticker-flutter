@@ -1,28 +1,13 @@
-![App Brewery Banner](https://github.com/londonappbrewery/Images/blob/master/AppBreweryBanner.png)
 
 
 # Bitcoin Ticker 🤑
 
-## Our Goal
-
-The objective of this tutorial is to learn about using Cupertino and Material Widgets in parallel and providing a different user interface depending on the platform.
 
 
-## What you will create
+<div style="display:flex; justify-content:space-around;">
+  <img src="https://github.com/amit2303/bitcoin-ticker-flutter/blob/main/snapshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-04-27%20at%2003.38.38.png" alt="App Screenshot 1" width="300" height="600">
+  <img src="https://github.com/amit2303/bitcoin-ticker-flutter/blob/main/snapshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-04-27%20at%2003.39.59.png" alt="App Screenshot 2" width="300" height="600">
+  <img src="https://github.com/amit2303/bitcoin-ticker-flutter/blob/main/snapshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-04-27%20at%2003.40.15.png" alt="App Screenshot 3" width="300" height="600">
+   <img src="https://github.com/amit2303/bitcoin-ticker-flutter/blob/main/snapshots/Simulator%20Screenshot%20-%20iPhone%2015%20Pro%20Max%20-%202024-04-27%20at%2003.42.12.png"alt="App Screenshot 4" width="300" height="600">
 
-We’re going to make a crypto currency price checking app. By the end of the module, you'll be able to monitor your bitcoin investents on the move!
-
-![Finished App](https://github.com/londonappbrewery/Images/blob/master/bitcoin-flutter-demo.gif)
-
-## What you will learn
-
-- How to use the DropdownButton Widget from Material design.
-- How to loop through code using Dart for and for-in loops.
-- How to use Cupertino Widgets in your app.
-- How to check the platform your app is being run on to customise the UI for that platform.
-- Revise previous concepts by completing the challenges.
-
-
->This is a companion project to The App Brewery's Complete Flutter Development Bootcamp, check out the full course at [www.appbrewery.co](https://www.appbrewery.co/)
-
-![End Banner](https://github.com/londonappbrewery/Images/blob/master/readme-end-banner.png)
+</div>
